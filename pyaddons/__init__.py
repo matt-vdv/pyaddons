@@ -77,6 +77,8 @@ class logger:
             if typeAdded: print(statment)
             else: print(printStatment)
 
+        return statment
+
 def getOS():
     import sys
     platforms = {

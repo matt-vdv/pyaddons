@@ -1,4 +1,6 @@
 # pyaddons
+[![Build Status](https://travis-ci.com/matt-hu/pyaddons.svg?branch=main)](https://travis-ci.com/matt-hu/pyaddons)
+
 A collection addons for the Python programming language
 
 The current addons are as follows:
