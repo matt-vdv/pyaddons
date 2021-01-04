@@ -1,7 +1,7 @@
-def log(statment, filePath="python.log"):
+def log(statment, filePath="logger.log"):
     print(statment)
     with open(filePath,'a') as file:
-        file.write(statment)
+        file.write("\n\t\t" + statment)
 
 class logger:
 
@@ -13,6 +13,7 @@ class logger:
     def __init__(self, filePath="logger.log",default="l"):
         self.filePath = filePath
         self.defaultAction = default
+    
     def openFile(self,mode="a"):
         self.file = open(self.filePath, mode)
 
@@ -54,9 +55,12 @@ class logger:
         if logTrue:
             if not self.timeWritten:
                 import datetime
-                self.openFile("r")
-                fileContents = self.file.read()
-                self.closeFile()
+                try:
+                    self.openFile("r")
+                    fileContents = self.file.read()
+                    self.closeFile()
+                except FileNotFoundError:
+                    fileContents = ''
 
                 self.openFile()
                 if fileContents != '':    
