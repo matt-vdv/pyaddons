@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pyaddons", # Replace with your own username
-    version="0.1.0",
+    version="0.1.1",
     author="Matt H",
     author_email="matt.hu1@outlook.com",
     description="A collection of addons for the Python programming language",
