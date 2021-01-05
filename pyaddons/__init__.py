@@ -9,10 +9,12 @@ class logger:
     file = None
     timeWritten = False
     defaultAction = ""
+    debugMode = False
 
-    def __init__(self, filePath="logger.log",default="l"):
+    def __init__(self, filePath="logger.log",default="l",debug=False):
         self.filePath = filePath
         self.defaultAction = default
+        self.debugMode = debug
     
     def openFile(self,mode="a"):
         self.file = open(self.filePath, mode)
@@ -25,6 +27,7 @@ class logger:
             code = self.defaultAction
         printTrue = False
         logTrue = False
+        onlyDebug = False
         typeAdded = False
         printStatment = ""
         for char in code:
@@ -32,6 +35,8 @@ class logger:
                 printTrue = True
             elif char == "l":
                 logTrue = True
+            elif char == 'd':
+                onlyDebug = True
             elif char == "e":
                 statment = "[ERROR]\t" + statment
                 typeAdded = True
@@ -51,6 +56,10 @@ class logger:
                 printTrue = True
             else:
                 logTrue = True
+        
+        if onlyDebug and not self.debugMode:
+            printTrue = False
+            logTrue = False
 
         if logTrue:
             if not self.timeWritten:
